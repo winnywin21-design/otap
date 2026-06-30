@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>미래엔 공통수학1 · 오답 노트 (학생용)</title>
+<style>
+:root{--navy:#1F3864;--ink:#1f2328;--mut:#6b7280;--line:#e5e7eb;--bg:#f7f8fa;--card:#fff;--accent:#185fa5;--accbg:#e6f1fb;--warn:#C2772E;--head:#5f6b7a;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding:14px}
+.phone{max-width:420px;margin:0 auto;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card)}
+.hbar{background:var(--head);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:11px 16px;font-size:15px;font-weight:600}
+.scr{padding:16px}
+.book{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:17px;font-weight:700;color:var(--accent)}
+.ch{background:var(--bg);border-radius:8px;padding:13px 15px;margin-bottom:8px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between}
+.mid{margin:0 0 8px 14px;background:var(--accbg);color:var(--accent);border-radius:8px;padding:11px 15px;font-size:14px;cursor:pointer}
+.back{border:none;background:none;font-size:20px;cursor:pointer;color:var(--mut)}
+.cornerbar{background:var(--accent);color:#fff;font-size:13px;font-weight:600;padding:7px 11px;border-radius:6px;margin:12px 0 8px}
+.nums{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.num{height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink)}
+.num.on{border-color:var(--warn);background:#FAEEDA;color:var(--warn)}
+.main{width:100%;height:42px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:18px}
+.nav{display:flex;gap:8px;margin-top:12px}
+.nav button{flex:1;height:36px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:14px;cursor:pointer}
+.send{display:flex;gap:8px;margin-top:8px}
+.send .pdf{flex:1;height:40px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.send .home{height:40px;padding:0 18px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:14px;cursor:pointer}
+.badge{display:inline-block;color:#fff;font-size:12px;font-weight:600;padding:3px 13px;border-radius:6px}
+.ph{border:1px dashed #b9bcc2;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;color:var(--mut);padding:6px;overflow:hidden}
+.ph img{max-width:100%;max-height:100%;display:block}
+/* 손글씨 괘선 */
+.rule{background-image:repeating-linear-gradient(transparent,transparent 39px,#cbd0d8 39px,#cbd0d8 40px);border-radius:4px}
+.qcard{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+@media print{
+  body{background:#fff;padding:0}
+  .phone{border:none;max-width:none;border-radius:0}
+  .hbar,.nav,.send,.pnav{display:none!important}
+  .scr{padding:0}
+  .qcard{border:1px solid #333;page-break-after:always;display:flex;flex-direction:column;min-height:255mm}
+  .solvewrap{flex:1;display:flex;flex-direction:column}
+  .solve{flex:1}
+  .ph{border-color:#999}
+}
+</style></head>
+<body>
+<div class="phone"><div class="hbar"><span>☰</span><span>오답 노트</span><span>›</span></div><div class="scr" id="scr"></div></div>
+<script>
+var DATA={"book": "미래엔 공통수학1", "units": {"Ⅰ. 다항식": {"01. 다항식의 연산": {"교과서 유형 정복": [{"no": 1, "img": "M01-유형정복-01.png"}, {"no": 2, "img": "M01-유형정복-02.png"}, {"no": 3, "img": "M01-유형정복-03.png"}, {"no": 4, "img": "M01-유형정복-04.png"}, {"no": 5, "img": "M01-유형정복-05.png"}, {"no": 6, "img": "M01-유형정복-06.png"}, {"no": 7, "img": "M01-유형정복-07.png"}, {"no": 8, "img": "M01-유형정복-08.png"}, {"no": 9, "img": "M01-유형정복-09.png"}, {"no": 10, "img": "M01-유형정복-10.png"}, {"no": 11, "img": "M01-유형정복-11.png"}, {"no": 12, "img": "M01-유형정복-12.png"}, {"no": 13, "img": "M01-유형정복-13.png"}, {"no": 14, "img": "M01-유형정복-14.png"}, {"no": 15, "img": "M01-유형정복-15.png"}, {"no": 16, "img": "M01-유형정복-16.png"}, {"no": 17, "img": "M01-유형정복-17.png"}, {"no": 18, "img": "M01-유형정복-18.png"}, {"no": 19, "img": "M01-유형정복-19.png"}, {"no": 20, "img": "M01-유형정복-20.png"}, {"no": 21, "img": "M01-유형정복-21.png"}, {"no": 22, "img": "M01-유형정복-22.png"}, {"no": 23, "img": "M01-유형정복-23.png"}, {"no": 24, "img": "M01-유형정복-24.png"}, {"no": 25, "img": "M01-유형정복-25.png"}, {"no": 26, "img": "M01-유형정복-26.png"}, {"no": 27, "img": "M01-유형정복-27.png"}, {"no": 28, "img": "M01-유형정복-28.png"}, {"no": 29, "img": "M01-유형정복-29.png"}, {"no": 30, "img": "M01-유형정복-30.png"}, {"no": 31, "img": "M01-유형정복-31.png"}, {"no": 32, "img": "M01-유형정복-32.png"}], "내신 실전 훈련 1회": [{"no": 1, "img": "M01-실전1-01.png"}, {"no": 2, "img": "M01-실전1-02.png"}, {"no": 3, "img": "M01-실전1-03.png"}, {"no": 4, "img": "M01-실전1-04.png"}, {"no": 5, "img": "M01-실전1-05.png"}, {"no": 6, "img": "M01-실전1-06.png"}, {"no": 7, "img": "M01-실전1-07.png"}, {"no": 8, "img": "M01-실전1-08.png"}, {"no": 9, "img": "M01-실전1-09.png"}, {"no": 10, "img": "M01-실전1-10.png"}, {"no": 11, "img": "M01-실전1-11.png"}, {"no": 12, "img": "M01-실전1-12.png"}], "내신 실전 훈련 2회": [{"no": 1, "img": "M01-실전2-01.png"}, {"no": 2, "img": "M01-실전2-02.png"}, {"no": 3, "img": "M01-실전2-03.png"}, {"no": 4, "img": "M01-실전2-04.png"}, {"no": 5, "img": "M01-실전2-05.png"}, {"no": 6, "img": "M01-실전2-06.png"}, {"no": 7, "img": "M01-실전2-07.png"}, {"no": 8, "img": "M01-실전2-08.png"}, {"no": 9, "img": "M01-실전2-09.png"}, {"no": 10, "img": "M01-실전2-10.png"}, {"no": 11, "img": "M01-실전2-11.png"}, {"no": 12, "img": "M01-실전2-12.png"}], "내신 실전 훈련 3회": [{"no": 1, "img": "M01-실전3-01.png"}, {"no": 2, "img": "M01-실전3-02.png"}, {"no": 3, "img": "M01-실전3-03.png"}, {"no": 4, "img": "M01-실전3-04.png"}, {"no": 5, "img": "M01-실전3-05.png"}, {"no": 6, "img": "M01-실전3-06.png"}, {"no": 7, "img": "M01-실전3-07.png"}, {"no": 8, "img": "M01-실전3-08.png"}, {"no": 9, "img": "M01-실전3-09.png"}, {"no": 10, "img": "M01-실전3-10.png"}, {"no": 11, "img": "M01-실전3-11.png"}, {"no": 12, "img": "M01-실전3-12.png"}], "수능 실력 완성": [{"no": 1, "img": "M01-수능-01.png"}, {"no": 2, "img": "M01-수능-02.png"}, {"no": 3, "img": "M01-수능-03.png"}, {"no": 4, "img": "M01-수능-04.png"}, {"no": 5, "img": "M01-수능-05.png"}, {"no": 6, "img": "M01-수능-06.png"}, {"no": 7, "img": "M01-수능-07.png"}, {"no": 8, "img": "M01-수능-08.png"}]}, "02. 나머지정리와 인수분해": {"교과서 유형 정복": [{"no": 1, "img": "M02-유형정복-01.png"}, {"no": 2, "img": "M02-유형정복-02.png"}, {"no": 3, "img": "M02-유형정복-03.png"}, {"no": 4, "img": "M02-유형정복-04.png"}, {"no": 5, "img": "M02-유형정복-05.png"}, {"no": 6, "img": "M02-유형정복-06.png"}, {"no": 7, "img": "M02-유형정복-07.png"}, {"no": 8, "img": "M02-유형정복-08.png"}, {"no": 9, "img": "M02-유형정복-09.png"}, {"no": 10, "img": "M02-유형정복-10.png"}, {"no": 11, "img": "M02-유형정복-11.png"}, {"no": 12, "img": "M02-유형정복-12.png"}, {"no": 13, "img": "M02-유형정복-13.png"}, {"no": 14, "img": "M02-유형정복-14.png"}, {"no": 15, "img": "M02-유형정복-15.png"}, {"no": 16, "img": "M02-유형정복-16.png"}, {"no": 17, "img": "M02-유형정복-17.png"}, {"no": 18, "img": "M02-유형정복-18.png"}, {"no": 19, "img": "M02-유형정복-19.png"}, {"no": 20, "img": "M02-유형정복-20.png"}, {"no": 21, "img": "M02-유형정복-21.png"}, {"no": 22, "img": "M02-유형정복-22.png"}, {"no": 23, "img": "M02-유형정복-23.png"}, {"no": 24, "img": "M02-유형정복-24.png"}, {"no": 25, "img": "M02-유형정복-25.png"}, {"no": 26, "img": "M02-유형정복-26.png"}, {"no": 27, "img": "M02-유형정복-27.png"}, {"no": 28, "img": "M02-유형정복-28.png"}, {"no": 29, "img": "M02-유형정복-29.png"}, {"no": 30, "img": "M02-유형정복-30.png"}, {"no": 31, "img": "M02-유형정복-31.png"}, {"no": 32, "img": "M02-유형정복-32.png"}, {"no": 33, "img": "M02-유형정복-33.png"}, {"no": 34, "img": "M02-유형정복-34.png"}, {"no": 35, "img": "M02-유형정복-35.png"}, {"no": 36, "img": "M02-유형정복-36.png"}, {"no": 37, "img": "M02-유형정복-37.png"}, {"no": 38, "img": "M02-유형정복-38.png"}, {"no": 39, "img": "M02-유형정복-39.png"}, {"no": 40, "img": "M02-유형정복-40.png"}, {"no": 41, "img": "M02-유형정복-41.png"}, {"no": 42, "img": "M02-유형정복-42.png"}, {"no": 43, "img": "M02-유형정복-43.png"}, {"no": 44, "img": "M02-유형정복-44.png"}, {"no": 45, "img": "M02-유형정복-45.png"}, {"no": 46, "img": "M02-유형정복-46.png"}, {"no": 47, "img": "M02-유형정복-47.png"}, {"no": 48, "img": "M02-유형정복-48.png"}, {"no": 49, "img": "M02-유형정복-49.png"}], "내신 실전 훈련 1회": [{"no": 1, "img": "M02-실전1-01.png"}, {"no": 2, "img": "M02-실전1-02.png"}, {"no": 3, "img": "M02-실전1-03.png"}, {"no": 4, "img": "M02-실전1-04.png"}, {"no": 5, "img": "M02-실전1-05.png"}, {"no": 6, "img": "M02-실전1-06.png"}, {"no": 7, "img": "M02-실전1-07.png"}, {"no": 8, "img": "M02-실전1-08.png"}, {"no": 9, "img": "M02-실전1-09.png"}, {"no": 10, "img": "M02-실전1-10.png"}, {"no": 11, "img": "M02-실전1-11.png"}, {"no": 12, "img": "M02-실전1-12.png"}], "내신 실전 훈련 2회": [{"no": 1, "img": "M02-실전2-01.png"}, {"no": 2, "img": "M02-실전2-02.png"}, {"no": 3, "img": "M02-실전2-03.png"}, {"no": 4, "img": "M02-실전2-04.png"}, {"no": 5, "img": "M02-실전2-05.png"}, {"no": 6, "img": "M02-실전2-06.png"}, {"no": 7, "img": "M02-실전2-07.png"}, {"no": 8, "img": "M02-실전2-08.png"}, {"no": 9, "img": "M02-실전2-09.png"}, {"no": 10, "img": "M02-실전2-10.png"}, {"no": 11, "img": "M02-실전2-11.png"}, {"no": 12, "img": "M02-실전2-12.png"}], "내신 실전 훈련 3회": [{"no": 1, "img": "M02-실전3-01.png"}, {"no": 2, "img": "M02-실전3-02.png"}, {"no": 3, "img": "M02-실전3-03.png"}, {"no": 4, "img": "M02-실전3-04.png"}, {"no": 5, "img": "M02-실전3-05.png"}, {"no": 6, "img": "M02-실전3-06.png"}, {"no": 7, "img": "M02-실전3-07.png"}, {"no": 8, "img": "M02-실전3-08.png"}, {"no": 9, "img": "M02-실전3-09.png"}, {"no": 10, "img": "M02-실전3-10.png"}, {"no": 11, "img": "M02-실전3-11.png"}, {"no": 12, "img": "M02-실전3-12.png"}], "수능 실력 완성": [{"no": 1, "img": "M02-수능-01.png"}, {"no": 2, "img": "M02-수능-02.png"}, {"no": 3, "img": "M02-수능-03.png"}, {"no": 4, "img": "M02-수능-04.png"}, {"no": 5, "img": "M02-수능-05.png"}, {"no": 6, "img": "M02-수능-06.png"}, {"no": 7, "img": "M02-수능-07.png"}, {"no": 8, "img": "M02-수능-08.png"}]}}}};
+var REASONS=["문제 이해 부족","개념 이해 부족","계산 과정 실수","기타"];
+var scr=document.getElementById('scr');
+var openCh=null,curDae=null,curMid=null,sel=[],page=0;
+function K(d,m,c,n){return [d,m,c,n].join("||");}
+function lookupImg(d,m,c,n){var arr=DATA.units[d][m][c]||[];for(var i=0;i<arr.length;i++)if(String(arr[i].no)===String(n))return arr[i].img;return "";}
+function esc(s){return String(s).replace(/'/g,"\\'");}
+
+function renderUnits(){
+  var h='<div class="book"><span style="font-size:18px">📒</span>'+DATA.book+'</div>';
+  Object.keys(DATA.units).forEach(function(d){
+    h+='<div class="ch" onclick="__tg(\''+esc(d)+'\')"><span>'+d+'</span><span style="color:var(--mut)">'+(openCh===d?'▴':'▾')+'</span></div>';
+    if(openCh===d)Object.keys(DATA.units[d]).forEach(function(m){h+='<div class="mid" onclick="__mid(\''+esc(d)+'\',\''+esc(m)+'\')">'+m+'</div>';});
+  });
+  scr.innerHTML=h;
+}
+function renderSelect(){
+  var h='<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><button class="back" onclick="__home()">‹</button><span style="font-size:15px;font-weight:600">'+curMid+'</span></div><p style="font-size:12px;color:var(--mut);margin:0 0 12px">담을 문제 번호를 누르세요. 다시 누르면 취소됩니다.</p>';
+  var corners=DATA.units[curDae][curMid];
+  Object.keys(corners).forEach(function(c){
+    h+='<div class="cornerbar">'+c+'</div><div class="nums">';
+    corners[c].forEach(function(p){var on=sel.indexOf(K(curDae,curMid,c,p.no))>=0;
+      h+='<button class="num'+(on?' on':'')+'" onclick="__sel(\''+esc(c)+'\','+p.no+')">'+p.no+'</button>';});
+    h+='</div>';
+  });
+  h+='<button class="main" onclick="__gen()">오답 노트 생성 ('+sel.length+'문제)</button>';
+  scr.innerHTML=h;
+}
+function infoTable(m,c,n){
+  return '<div style="display:grid;grid-template-columns:0.7fr 1.6fr 1.3fr 0.6fr;font-size:10px;border-bottom:1px solid var(--line)">'
+    +'<div style="background:var(--accbg);color:#C0392B;font-weight:700;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center">오답<br>노트</div>'
+    +'<div><div style="background:var(--accent);color:#fff;text-align:center;padding:4px;font-weight:600">중단원명</div><div style="text-align:center;padding:5px 3px">'+m+'</div></div>'
+    +'<div style="border-left:1px solid var(--line)"><div style="background:var(--accent);color:#fff;text-align:center;padding:4px;font-weight:600">코너명</div><div style="text-align:center;padding:5px 3px;font-size:9px">'+c+'</div></div>'
+    +'<div style="border-left:1px solid var(--line)"><div style="background:var(--accent);color:#fff;text-align:center;padding:4px;font-weight:600">번호</div><div style="text-align:center;padding:5px 3px">'+n+'</div></div></div>';
+}
+function renderNote(){
+  if(!sel.length){renderSelect();return;}
+  var parts=sel[page].split("||"),d=parts[0],m=parts[1],c=parts[2],n=parts[3];
+  var img=lookupImg(d,m,c,n);
+  var imgHtml=img?'<img src="images/'+img+'" alt="'+n+'번">':'교재 문항<br>이미지 자리';
+  var h='<div class="pnav" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><button class="back" onclick="__back()">‹</button><span style="font-size:12px;color:var(--mut)">'+(page+1)+' / '+sel.length+'</span></div>';
+  h+='<div class="qcard">'+infoTable(m,c,n);
+  // 윗단: 문제 | 틀린이유+알아야할점
+  h+='<div style="display:grid;grid-template-columns:1.15fr 1fr;border-bottom:1px solid var(--line)">';
+  h+='<div style="border-right:1px solid var(--line);padding:8px"><span class="badge" style="background:var(--accent)">문제</span><div class="ph" style="margin-top:6px;height:230px">'+imgHtml+'</div></div>';
+  h+='<div style="padding:8px;display:flex;flex-direction:column"><span class="badge" style="background:var(--warn)">틀린 이유</span><div style="margin-top:7px;font-size:12px">';
+  REASONS.forEach(function(r){h+='<label style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><input type="checkbox" style="margin:0">'+r+'</label>';});
+  h+='</div><span class="badge" style="background:var(--warn);margin-top:6px">알아야 할 점</span><div class="rule" style="margin-top:7px;flex:1;min-height:96px"></div></div>';
+  h+='</div>';
+  // 아랫단: 풀이 통칸(큰 괘선) — 인쇄 시 페이지 끝까지 채움
+  h+='<div class="solvewrap" style="padding:8px"><span class="badge" style="background:var(--accent)">풀이</span><div class="rule solve" style="margin-top:7px;height:360px"></div></div>';
+  h+='<div style="text-align:center;font-size:11px;color:var(--mut);padding:5px">'+(page+1)+'</div></div>';
+  h+='<div class="nav pnav"><button onclick="__pg(-1)" style="opacity:'+(page===0?'.4':'1')+'">‹ 이전</button><button onclick="__pg(1)" style="opacity:'+(page===sel.length-1?'.4':'1')+'">다음 ›</button></div>';
+  h+='<div class="send"><button class="pdf" onclick="window.print()">전송 (PDF 저장)</button><button class="home" onclick="__home()">Home</button></div>';
+  scr.innerHTML=h;
+}
+window.__tg=function(d){openCh=(openCh===d?null:d);renderUnits();};
+window.__mid=function(d,m){curDae=d;curMid=m;sel=[];page=0;renderSelect();};
+window.__home=function(){openCh=null;curDae=null;curMid=null;sel=[];page=0;renderUnits();};
+window.__sel=function(c,n){var k=K(curDae,curMid,c,n),i=sel.indexOf(k);if(i>=0)sel.splice(i,1);else sel.push(k);renderSelect();};
+window.__gen=function(){if(!sel.length){alert('문제를 1개 이상 선택하세요.');return;}page=0;renderNote();};
+window.__back=function(){renderSelect();};
+window.__pg=function(dd){page=Math.max(0,Math.min(sel.length-1,page+dd));renderNote();};
+renderUnits();
+</script></body></html>
