@@ -33,9 +33,10 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var
   .phone{border:none;max-width:none;border-radius:0}
   .hbar,.nav,.send,.pnav{display:none!important}
   .scr{padding:0}
-  .qcard{border:1px solid #333;page-break-after:always;display:flex;flex-direction:column;min-height:255mm}
-  .solvewrap{flex:1;display:flex;flex-direction:column}
-  .solve{flex:1}
+  .qcard{border:1px solid #333;display:flex;flex-direction:column;break-inside:avoid}
+  .qimg{height:74mm!important}
+  .kmemo{height:28mm!important;min-height:0!important;flex:none!important}
+  .solve{height:80mm!important;flex:none!important}
   .ph{border-color:#999}
 }
 </style></head>
@@ -85,11 +86,12 @@ function renderNote(){
   var h='<div class="pnav" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><button class="back" onclick="__back()">‹</button><span style="font-size:12px;color:var(--mut)">'+(page+1)+' / '+sel.length+'</span></div>';
   h+='<div class="qcard">'+infoTable(m,c,n);
   // 윗단: 문제 | 틀린이유+알아야할점
-  h+='<div style="display:grid;grid-template-columns:1.15fr 1fr;border-bottom:1px solid var(--line)">';
-  h+='<div style="border-right:1px solid var(--line);padding:8px"><span class="badge" style="background:var(--accent)">문제</span><div class="ph" style="margin-top:6px;height:230px">'+imgHtml+'</div></div>';
-  h+='<div style="padding:8px;display:flex;flex-direction:column"><span class="badge" style="background:var(--warn)">틀린 이유</span><div style="margin-top:7px;font-size:12px">';
+  h+='<div class="qprob" style="padding:8px;border-bottom:1px solid var(--line)"><span class="badge" style="background:var(--accent)">문제</span><div class="ph qimg" style="margin-top:6px;height:250px">'+imgHtml+'</div></div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)">';
+  h+='<div style="border-right:1px solid var(--line);padding:8px"><span class="badge" style="background:var(--warn)">틀린 이유</span><div style="margin-top:7px;font-size:12px">';
   REASONS.forEach(function(r){h+='<label style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><input type="checkbox" style="margin:0">'+r+'</label>';});
-  h+='</div><span class="badge" style="background:var(--warn);margin-top:6px">알아야 할 점</span><div class="rule" style="margin-top:7px;flex:1;min-height:96px"></div></div>';
+  h+='</div></div>';
+  h+='<div style="padding:8px;display:flex;flex-direction:column"><span class="badge" style="background:var(--warn)">알아야 할 점</span><div class="rule kmemo" style="margin-top:7px;min-height:90px"></div></div>';
   h+='</div>';
   // 아랫단: 풀이 통칸(큰 괘선) — 인쇄 시 페이지 끝까지 채움
   h+='<div class="solvewrap" style="padding:8px"><span class="badge" style="background:var(--accent)">풀이</span><div class="rule solve" style="margin-top:7px;height:360px"></div></div>';
