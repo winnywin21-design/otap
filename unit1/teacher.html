@@ -24,7 +24,7 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var
 .send .home{height:40px;padding:0 18px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:14px;cursor:pointer}
 .ph{border:1px dashed #b9bcc2;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:9px;color:var(--mut);padding:4px;overflow:hidden}
 .ph img{max-width:100%;max-height:100%;display:block}
-@media print{body{background:#fff;padding:0}.phone{border:none;max-width:none}.hbar,.nav,.send{display:none!important}}
+@media print{@page{margin:10mm}body{background:#fff;padding:0}.phone{border:none;max-width:none}.hbar,.nav,.send{display:none!important}.tcell{min-height:108mm!important}.timg{height:95mm!important}}
 </style></head>
 <body>
 <div class="phone"><div class="hbar"><span>☰</span><span>오답 노트 · 교사용</span><span>›</span></div><div class="scr" id="scr"></div></div>
@@ -59,10 +59,10 @@ function renderSelect(){
 }
 function cell(i,right,bottom){
   var bd='';if(right)bd+='border-right:1px solid var(--line);';if(bottom)bd+='border-bottom:1px solid var(--line);';
-  if(i>=sel.length)return '<div style="'+bd+'min-height:130px"></div>';
+  if(i>=sel.length)return '<div class="tcell" style="'+bd+'min-height:130px"></div>';
   var parts=sel[i].split("||"),d=parts[0],m=parts[1],c=parts[2],n=parts[3],img=lookupImg(d,m,c,n);
   var inner=img?'<img src="images/'+img+'" alt="'+n+'번">':'교재 문항<br>이미지 자리';
-  return '<div style="'+bd+'padding:9px;min-height:130px"><div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:6px">'+pad(i+1)+'</div><div class="ph" style="height:92px">'+inner+'</div></div>';
+  return '<div class="tcell" style="'+bd+'padding:9px;min-height:130px"><div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:6px">'+pad(i+1)+'</div><div class="ph timg" style="height:92px">'+inner+'</div></div>';
 }
 function renderNote(){
   if(!sel.length){renderSelect();return;}
